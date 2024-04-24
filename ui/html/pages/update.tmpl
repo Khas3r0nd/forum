@@ -1,0 +1,22 @@
+{{define "title"}}Create a New Post{{end}}
+{{define "main"}}
+{{with .Post}}
+<div class="mainConteiner">
+    <form action='/post/update?id={{.ID}}' method='POST' class="createContainer">
+        <div class="createPostTitle">
+            <label>Title:</label>
+            <br>
+            <input type='text' name='title' class="createInput" value='{{.Title}}'>
+        </div>
+        <div class="createPostContent">
+            <label>Content:</label>
+            <textarea name='content'>{{.Content}}</textarea>
+        </div>
+        
+        <div>
+            <input type='submit' value='Publish snippet'>   
+        </div>
+    </form>
+</div>
+{{end}}
+{{end}}

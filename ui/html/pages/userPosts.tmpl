@@ -1,0 +1,33 @@
+{{define "title"}}MyPosts{{end}}
+{{define "main"}}
+<div class="mainConteiner">
+<h2>My posts</h2>
+{{if .Posts}}
+<div class="mainPostsListConteiner">
+    <div class="postListHeader">
+        <div class="postsListTitles">Title</div>
+        <div class="postsListCreatedDate">Created</div>
+        <div class="postsListIDCount">ID</div>
+    </div>
+
+    <div class="postListContentConteiner">
+            {{range .Posts}}
+            <a href='/post/view?id={{.ID}}' title="{{.Content}}">
+                <div class="postListContent"> 
+                    <img class="homeImg" src="{{.Image}}" alt="why?"/>
+   
+                    <div class="postListContentTitle shortText">{{.Title}}</div>
+                    <!-- Для эффекта циличной бегущей строки  -->
+                    <!-- <div class="postListContentTitle shortTextRight">{{.Title}}</div> -->
+                    <div class="postListContentCreatedDate">{{humanDate .Created}}</div>
+                    <div class="postListContentID">#{{.ID}}</div>
+                </div>
+            </a>
+            {{end}}
+    </div>
+</div>
+{{else}}
+<p>You have no snippets yet...</p>
+{{end}}
+{{end}}
+</div>

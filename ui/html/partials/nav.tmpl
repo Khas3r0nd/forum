@@ -1,0 +1,61 @@
+{{define "nav"}}
+<div class="menu">
+        <nav class="flexConteiner navbar">
+            <a href='/'>Home</a>
+            {{if .AuthenticatedUser}}
+            <a href='/post/create'>Create post</a>
+            <a href='/notifications'>Notifiacations</a>
+            <div class="dropdown">
+                <!-- потом придумаем куда ссылка будет вести -->
+                <!-- <a href='/myactivities'></a> --> 
+                <a>My activities</a>
+                <div class="dropdown-content">
+                    <a href='/myactivities/myposts'>My posts</a>
+                    <a href='/myactivities/likedposts'>Liked posts</a>
+                    <a href='/myactivities/comments'>My comments</a>
+                </div>
+            </div>
+            {{end}}
+            <div class="flexConteiner loginNav">
+                {{if .AuthenticatedUser}}
+                <form action='/user/logout' method='POST'>
+                    <button>Logout</button>
+                </form>{{else}}
+                <a href='/user/signup'>Signup</a>
+                <a href='/user/login'>Login</a>
+                {{end}}
+            </div>
+        </nav>
+        
+    <div class="hamburger-menu">
+        <input id="menu__toggle" type="checkbox">
+        <label class="menu__btn" for="menu__toggle">
+            <span></span>
+        </label>
+        <ul class="menu__box">
+         
+            {{if .AuthenticatedUser}}
+            <li>  
+                <div class="menu__item">
+                <h1 class="logo"><a href='/'>Forum</a></h1>
+             
+            </div> </li>
+            <li><a class="menu__item" target="_blank" href='/post/create'>Create snippet</a></li>
+            <li><a class="menu__item" target="_blank" href='/myposts'>My posts</a></li>
+            <li><a class="menu__item" target="_blank" href='/likedposts'>Liked posts</a></li>
+       {{end}}
+
+            <li>
+                {{if .AuthenticatedUser}}
+                <form action='/user/logout' method='POST'>
+                    <button>Logout</button>
+                </form>{{else}}
+                <a href='/user/signup' class="menu__item" >Signup</a>
+                <a href='/user/login' class="menu__item" >Login</a>
+                {{end}}</li>
+        </ul>
+    </div>
+</div>
+
+{{end}}
+

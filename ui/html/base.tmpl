@@ -1,0 +1,33 @@
+{{define "base"}}
+<!doctype html>
+<html lang='en'>
+
+<head>
+    <meta charset='utf-8'>
+    <title>{{template "title" .}} - FORUM</title>
+    <link rel='stylesheet' href='/static/css/main.css'>
+    <link rel='shortcut icon' href='/static/img/favicon.ico' type='image/x-icon'>
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700'>
+</head>
+
+<body>
+    <header class="flexContainer header">
+        <div class="headerContent" >
+            <div class="headerNavConteiner flexConteiner">
+                <a href='/'> <img src="/static/img/logo_steam.svg" class="logo"></a>
+                {{template "nav" .}}
+            </div> 
+        </div>
+    </header>
+    <main>
+        {{template "main" .}}
+    </main>
+    <footer>
+        <!-- Update the footer to include the current year -->
+        <label>Made for <a href='https://alem.school'> Alem School </a> in {{.CurrentYear}}</label>
+    </footer>
+    <script src="/static/js/main.js" type="text/javascript"></script>
+</body>
+
+</html>
+{{end}}

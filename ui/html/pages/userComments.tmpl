@@ -1,0 +1,28 @@
+{{define "title"}}MyLikedPost{{end}}
+{{define "main"}}
+<div class="mainConteiner">
+    <h2 class="likedPostTitle">My Comments</h2>
+    {{if .Comments}}
+    <div class="mainPostsListConteiner">
+        <div class="postListHeader">
+
+            <div class="postsListTitles">Comment</div>
+            <div class="postsListCreatedDate">Created</div>
+        </div>
+        <div class="postListContentConteiner">
+            {{range .Comments}}
+            
+            <a href='/post/view?id={{.PostID}}' title="view more">
+            <div class="postListContent">
+                        <p class="commentText">{{.Text}}</p>
+                        <p class="commentCreatedData">{{humanDate .CreatedAt}}</p>
+            </div> 
+            </a>
+            {{end}}
+        </div>
+    </div>
+    {{else}}
+    <p>You have no commented posts yet...</p>
+    {{end}}
+    {{end}}
+</div>

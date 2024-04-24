@@ -1,0 +1,33 @@
+{{define "title"}}MyLikedPost{{end}}
+{{define "main"}}
+<div class="mainConteiner">
+    <h2 class="likedPostTitle">My Liked Posts</h2>
+    {{if .Posts}}
+    <div class="mainPostsListConteiner">
+        <div class="postListHeader">
+            <div class="postsListTitles">Title</div>
+            <div class="postsListCreatedDate">Created</div>
+            <!-- <div class="postsListIDCount"> Потом</div> -->
+        </div>
+        <div class="postListContentConteiner">
+            {{range .Posts}}
+
+            <a href='/post/view?id={{.ID}}' title="{{.Content}}">
+                <div class="postListContent">
+                    <img class="homeImg" src="{{.Image}}" alt="why?"/>
+
+                    <div class="postListContentTitle postListContentTitle2 shortText">{{.Title}}</div>
+                    <div class="postListContentCreatedDate">{{humanDate .Created}}</div>                
+                    <!-- <div class="postListContentID">
+                    потом придумаем
+                    </div> -->
+                </div>
+            </a>
+            {{end}}
+        </div>
+    </div>
+{{else}}
+<p>You have no liked snippets yet...</p>
+{{end}}
+{{end}}
+</div>

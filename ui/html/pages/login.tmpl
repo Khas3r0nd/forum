@@ -1,0 +1,62 @@
+{{define "title"}}Login{{end}}
+{{define "main"}}
+<div class="joinForm loginForm">
+    <div class="loginConteiner">
+            <div class="signIn">Sign in</div>
+            <form class ="login" action='/user/login' method='POST' novalidate>
+               <div class="signConteiner">
+                    <!-- Notice that here we are looping over the NonFieldErrors and displaying
+                        them, if any exist -->
+                        {{range .Form.NonFieldErrors}}
+                        <div class='error'>{{.}}</div>
+                        {{end}}
+                        <div>
+                            <label>Email:</label>
+                            {{with .Form.FieldErrors.email}}
+                            <label class='error'>{{.}}</label>
+                            {{end}}
+                            <input type='email' class="regForm createInput" name='email' value='{{.Form.Email}}'>
+                        </div>
+                        <div>
+                            <label>Password:</label>
+                            {{with .Form.FieldErrors.password}}
+                            <label class='error'>{{.}}</label>
+                            {{end}}
+                            <div class="inputContainer">
+                                <input type='password' id="passwordField" class="regForm createInput" name='password'>
+                                <!-- временно текст потом найду иконку и вставлю... наверно -->
+                                <button type="button" id='togglePassword' class="iconButton">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.98 8.223A10.477 10.477 0 0 0 1.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.451 10.451 0 0 1 12 4.5c4.756 0 8.773 3.162 10.065 7.498a10.522 10.522 0 0 1-4.293 5.774M6.228 6.228 3 3m3.228 3.228 3.65 3.65m7.894 7.894L21 21m-3.228-3.228-3.65-3.65m0 0a3 3 0 1 0-4.243-4.243m4.242 4.242L9.88 9.88" />
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div>
+                            <input type='submit' value='Login'>
+                        </div>
+                    </div>
+                    
+                    <div class="qrConteiner">
+                        
+                        <img class="qr" alt="не работающий QR-code" src="/static/img/Rickrolling_QR_code.png">
+                        <p class="qrText"> Use the Cam App to sign in via QR code</p>
+                    </div>
+                    
+                    
+            </form>
+            <a class="btn btn-outline-dark btn-block btn-google" href="/authgoogle" role="button">
+                <div class="auth_Conteiner">
+                    <span class="google_Icon"></span>
+                    <span>Login with Google</span>
+                </div>
+            </a>
+            <a class="btn btn-outline-dark btn-block btn-github" href="/authgithub" role="button">
+                <div class="auth_Conteiner">
+                    <span class="git_Icon"></span>
+                    <span>Login with Github</span>
+                </div>
+            </a>
+    </div>    
+</div>
+{{end}}

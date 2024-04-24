@@ -1,0 +1,42 @@
+{{define "title"}}Notifications{{end}}
+{{define "main"}}
+<div class="mainConteiner">
+    <h2 class="likedPostTitle">Notifacations</h2>
+    {{if .Comments}}
+    <div class="mainPostsListConteiner">
+        <div class="postListHeader">
+
+            <div class="postsListTitles">Comment</div>
+            <div class="postsListCreatedDate">Created</div>
+        </div>
+        <div class="postListContentConteiner notificationsPostListConteiner">
+            {{range .Comments}}
+            <a href='/post/view?id={{.PostID}}' title="view more">
+            <div class="postListContent notificationsConteiner">
+                        <p>{{.Username}} commented your post</p>
+                        <!-- <i>Left </i> -->
+                    </a>
+                    {{end}}
+                </div> 
+            </div>
+            {{range .Reactions}}
+            <a href='/post/view?id={{.PostID}}' title="view more" class="notificationsConteiner">
+            {{if eq .LikeStatus 1}}
+                <p>{{.Username}} likes your post</p>
+            {{else}}
+                <p>{{.Username}} does not like your post</p>
+            {{end}}
+            
+            </a>
+            {{end}}
+        </div>
+    </div>
+    {{else}}
+    <div class="noResults">
+        <img src="static/img/modcheck.gif" alt="NO RESULT">
+        <p>You have no commented posts yet...</p>
+        <a href="/">Go Back</a>
+    </div>
+    {{end}}
+    {{end}}
+</div>

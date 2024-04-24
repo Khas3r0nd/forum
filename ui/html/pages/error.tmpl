@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{.Status}} - {{.Message}}</title>
+    <link rel="stylesheet" href="/static/css/error.css">
+</head>
+<body>
+    <div class="error-page">
+        <div>
+            <h1 data-h1="{{ .Status }}">{{ .Status }}</h1>
+            <p data-p="{{ .Message }}" class="messageConteiner"><big class="errorMessage">{{ .Message }}</big></p>
+            <a href="/" class="back">GO BACK</a>
+        </div>
+    </div>
+    <div id="particles-js"></div>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="particles-config.js"></script>
+</body>
+</html>

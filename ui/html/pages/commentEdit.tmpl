@@ -1,0 +1,12 @@
+{{define "title"}}Create a New Post{{end}}
+{{define "main"}}
+<h2>Edit Comment</h2>
+<div class="mainConteiner">
+    <form action='/commentEdit?id={{.Comment.CommentID}}' method='POST' class="createContainer">
+            <input type='text' name='comment' class="createInput editInput" value='{{.Comment.Text}}'>       
+        <div>
+            <input type='submit' value='Publish snippet'>   
+        </div>
+    </form>
+</div>
+{{end}}
